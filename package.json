@@ -1,0 +1,17 @@
+{
+  "name": "consent-tracker",
+  "version": "1.0.0",
+  "description": "The consent management library that doesn't fight your design system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
+  "author": "Tiberius Gherac",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "typescript": "^5.9.2"
+  }
+}

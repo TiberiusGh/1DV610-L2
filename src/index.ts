@@ -18,9 +18,8 @@ export function getConsents(): ConsentCategories | null {
   }
 }
 
-export function setConsents(consents: ConsentCategories): ConsentCategories {
+export function setConsents(consents: ConsentCategories): void {
   localStorage.setItem('consent-tracker', JSON.stringify(consents))
-  return consents
 }
 
 export function uppdateConsent(category: string, value: boolean): void {
@@ -58,6 +57,20 @@ export function uppdateConsent(category: string, value: boolean): void {
   localStorage.setItem('consent-tracker', JSON.stringify(storedConsent))
 }
 
-export function withdrawConsent() {
+export function withdrawConsent(): void {
   localStorage.removeItem('consent-tracker')
+}
+
+export function acceptAll(): void {
+  const consentedAll = {
+    essential: true,
+    analytics: true,
+    marketing: true
+  }
+
+  setConsents(consentedAll)
+}
+
+export function declineAll(): void {
+  withdrawConsent()
 }

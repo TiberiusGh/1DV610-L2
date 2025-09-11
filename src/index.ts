@@ -54,6 +54,10 @@ export function uppdateConsent(category: string, value: boolean): void {
   try {
     const stored = localStorage.getItem('consent-tracker')
     storedConsent = stored ? JSON.parse(stored) : null
+
+    if (storedConsent) {
+      storedConsent.uppdateTime = new Date()
+    }
   } catch (error) {
     storedConsent = null
   }
@@ -98,8 +102,6 @@ export function acceptAll(): void {
   }
 
   setConsents(consentedAll)
-
-  runCallback()
 }
 
 export function declineAll(): void {

@@ -4,6 +4,8 @@ type ConsentCategories = {
   marketing: boolean
 }
 
+let callbackFunction: Function
+
 export function getConsents(): ConsentCategories | null {
   const storedConsent = localStorage.getItem('consent-tracker')
 
@@ -55,10 +57,14 @@ export function uppdateConsent(category: string, value: boolean): void {
   }
 
   localStorage.setItem('consent-tracker', JSON.stringify(storedConsent))
+
+  runCallback()
 }
 
 export function withdrawConsent(): void {
   localStorage.removeItem('consent-tracker')
+
+  runCallback()
 }
 
 export function acceptAll(): void {
@@ -69,8 +75,22 @@ export function acceptAll(): void {
   }
 
   setConsents(consentedAll)
+
+  runCallback()
 }
 
 export function declineAll(): void {
   withdrawConsent()
+  runCallback()
+}
+
+export function onConsentChange(callback: Function) {
+  callbackFunction = callback
+}
+
+function runCallback() {
+  if (callbackFunction) {
+    const currentConsents = getConsents()
+    callbackFunction(currentConsents)
+  }
 }

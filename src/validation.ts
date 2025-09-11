@@ -3,5 +3,5 @@ export function validateDate(storedDate: Date): boolean {
   const expirationDate = new Date(storedDate)
   expirationDate.setMonth(storedDate.getMonth() + 12)
 
-  return currentDate < expirationDate
+  return currentDate > expirationDate
 }

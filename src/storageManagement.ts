@@ -8,10 +8,10 @@ export function getConsents(): ConsentCategories | null {
     return null
   }
 
-  const parsedConsents = JSON.parse(storedConsent)
-  parsedConsents.uppdateTime = new Date(parsedConsents.uppdateTime)
-
   try {
+    const parsedConsents = JSON.parse(storedConsent)
+    parsedConsents.uppdateTime = new Date(parsedConsents.uppdateTime)
+
     const isExpired = validateDate(parsedConsents.uppdateTime)
 
     if (!isExpired) {

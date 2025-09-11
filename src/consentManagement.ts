@@ -12,10 +12,11 @@ export function setConsents(consents: ConsentCategories): void {
 
   if (falseConsents) {
     clearConsent()
+    runCallback()
   } else {
     saveConsent(currentConsents)
+    runCallback(currentConsents)
   }
-  runCallback(currentConsents)
 }
 
 export function uppdateConsent(category: string, value: boolean): void {
@@ -62,10 +63,11 @@ export function uppdateConsent(category: string, value: boolean): void {
 
   if (falseConsents) {
     clearConsent()
+    runCallback()
   } else {
     saveConsent(storedConsent)
+    runCallback(storedConsent)
   }
-  runCallback(storedConsent)
 }
 
 export function acceptAll(): void {

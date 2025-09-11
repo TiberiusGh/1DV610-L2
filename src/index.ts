@@ -1,54 +1,26 @@
-type ConsentCategories = {
-  essential: boolean
-  analytics: boolean
-  marketing: boolean
-  uppdateTime: Date
+import type { ConsentCategories } from './types.ts'
+import { onConsentChange, runCallback } from './callback.js'
+import { saveConsent, clearConsent, getConsents } from './storageManagement.js'
+
+export {
+  getConsents,
+  setConsents,
+  uppdateConsent,
+  acceptAll,
+  declineAll,
+  onConsentChange
 }
 
-let callbackFunction: Function
+function setConsents(consents: ConsentCategories): void {
+  const currentConsents = consents
 
-export function getConsents(): ConsentCategories | null {
-  const storedConsent = localStorage.getItem('consent-tracker')
+  currentConsents.uppdateTime = new Date()
 
-  if (!storedConsent) {
-    return null
-  }
-
-  const parsedConsents = JSON.parse(storedConsent)
-  parsedConsents.uppdateTime = new Date(parsedConsents.uppdateTime)
-
-  try {
-    const isExpired = validateDate(parsedConsents.uppdateTime)
-
-    if (!isExpired) {
-      return parsedConsents
-    } else {
-      declineAll()
-      return null
-    }
-  } catch (error) {
-    return null
-  }
+  saveConsent(currentConsents)
+  runCallback(currentConsents)
 }
 
-function validateDate(storedDate: Date): boolean {
-  const currentDate = new Date()
-  const expirationDate = new Date(storedDate)
-  expirationDate.setMonth(storedDate.getMonth() + 12)
-
-  return currentDate < expirationDate
-}
-
-export function setConsents(consents: ConsentCategories): void {
-  const dataToStore = consents
-
-  dataToStore.uppdateTime = new Date()
-
-  localStorage.setItem('consent-tracker', JSON.stringify(dataToStore))
-  runCallback()
-}
-
-export function uppdateConsent(category: string, value: boolean): void {
+function uppdateConsent(category: string, value: boolean): void {
   let storedConsent: ConsentCategories | null
 
   try {
@@ -88,12 +60,11 @@ export function uppdateConsent(category: string, value: boolean): void {
       break
   }
 
-  localStorage.setItem('consent-tracker', JSON.stringify(storedConsent))
-
-  runCallback()
+  saveConsent(storedConsent)
+  runCallback(storedConsent)
 }
 
-export function acceptAll(): void {
+function acceptAll(): void {
   const consentedAll = {
     essential: true,
     analytics: true,
@@ -101,21 +72,11 @@ export function acceptAll(): void {
     uppdateTime: new Date()
   }
 
-  setConsents(consentedAll)
+  saveConsent(consentedAll)
+  runCallback(consentedAll)
 }
 
-export function declineAll(): void {
-  localStorage.removeItem('consent-tracker')
+function declineAll(): void {
+  clearConsent()
   runCallback()
-}
-
-export function onConsentChange(callback: Function) {
-  callbackFunction = callback
-}
-
-function runCallback() {
-  if (callbackFunction) {
-    const currentConsents = getConsents()
-    callbackFunction(currentConsents)
-  }
 }

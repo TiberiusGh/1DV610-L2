@@ -5,6 +5,10 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/TiberiusGh/1DV610-L2.git"

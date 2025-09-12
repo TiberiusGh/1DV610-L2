@@ -2,7 +2,9 @@
   "name": "consent-tracker",
   "version": "1.0.0",
   "description": "The consent management library that doesn't fight your design system",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/TiberiusGh/1DV610-L2.git"

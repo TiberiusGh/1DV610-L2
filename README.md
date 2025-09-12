@@ -10,8 +10,6 @@ The module is using local storage to store the users consents. If consents are s
 
 The user's consents is valid for 12 months and removed after that.
 
-Another reason for the creation of this module is for me to better understand currently governing laws in EU regarding storing data on a user's computer.
-
 ### Public API's
 
 - onConsentChange(callbackFunction) - Callbackfunction for state change on consents. The method will return the consents in object form as:

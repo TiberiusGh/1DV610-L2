@@ -7,7 +7,7 @@ import {
   declineAll
 } from './consentManagement.js'
 
-export {
+const consentTracker = {
   getConsents,
   setConsents,
   uppdateConsent,
@@ -15,3 +15,5 @@ export {
   declineAll,
   onConsentChange
 }
+
+export default consentTracker

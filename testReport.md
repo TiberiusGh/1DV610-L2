@@ -33,4 +33,8 @@ The specific test cases are:
     > Test passed ✅ at v. 1.0.1
 
 - The callback function is tested by updating the text content of the `<pre>` element at each change of the consents.
+
+  > Test passed ✅ at v. 1.0.1
+
+- The removal of consents from localStorage after 12 months was tested by reducing the time to one minute in the development environment
   > Test passed ✅ at v. 1.0.1

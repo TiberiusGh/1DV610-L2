@@ -2,6 +2,10 @@
 
 In this repository i am creating a module for managing consents from users regarding storing data on the user's browser. The target of this module is developers that want full design customization posibility for rendering choices. This module does only provide the underlying logic needed for storing retrieving and updating the consents trough trough easy to use function calls. The current available packages are either inferring their design choices with no posibility to change them or only allow customization of only specific parts of the banner. Simply put, a consent manager that doesn't fight design choices.
 
+I understand that creating such a package is much more complex than the implementation provided here. Further improvements are registered under issues, and other important aspects that developers need to take into account will be posted here. Nevertheless, working with this package has given me knowledge about the current requirements regarding GDPR.
+
+To maintain legal compliance, one must provide proof of users consents. This requires creating logs of user consents and storing them together with personal data (ex. IP addresses). This feature is not implemented in this module.
+
 This module does **not** provide the visual banner that would get rendered in the viewport.
 
 This module uses ES Modules and **not** CommonJS. Make sure you use `import` statements and not `reqire()`.

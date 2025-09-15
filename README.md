@@ -73,6 +73,8 @@ import {
 } from 'consent-tracker'
 ```
 
+### Testing report is provided in [testReport.md](https://github.com/TiberiusGh/1DV610-L2/testReport.md)
+
 ### Future development
 
 - Use cookies as fallback if there is no access to localstorage to store the users consents.

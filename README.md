@@ -73,7 +73,7 @@ import {
 } from 'consent-tracker'
 ```
 
-### Testing report is provided in [testReport.md](https://github.com/TiberiusGh/1DV610-L2/testReport.md)
+### Testing report is provided in [testReport.md](testReport.md)
 
 ### Future development
 

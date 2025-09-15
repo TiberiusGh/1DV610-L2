@@ -6,13 +6,13 @@ To assist in checking what is stored in the browser's local storage a `<pre>` el
 
 The specific test cases are:
 
-- Retrieving current consents by pressing the "Get consents" `<button>`
+- Retrieving current consents by pressing the "Get consents" `<button>` trigger and tests the `getConsents()` function.
 
   - returns `null` if there are no consents stored or if the users deny all consents
   - returns a `object` containing consents (if there is at least one cattegory accepted by the user) and a Date `object`
     > Test passed ✅ at v. 1.0.1
 
-- Essentials, Marketing, Analytics on/ off
+- Essentials, Marketing, Analytics on/ off is triggering and testing the `uppdateConsent(category, value)` function.
 
   - Pressing the `on` button saves the essentials/ marketing/ analytics as true in localstorage
   - Pressing the `off` button saves the essentials/ marketing/ analytics as false in localstorage
@@ -20,19 +20,19 @@ The specific test cases are:
   - The Date `object` is uppdated containing the Date with timestamp of when the user updated consents latest.
     > Test passed ✅ at v. 1.0.1
 
-- Accept/ Reject All
+- Accept/ Reject All triggers and tests the `acceptAll()` and `declineAll()` functions.
 
   - Accept all would set the consents for essentials, marketing, analytics to `true`
   - Reject all would delete the consents stored in localstorage
     > Test passed ✅ at v. 1.0.1
 
-- Set custom consents 1/ 2 tests setting custom values in bulk for the consent categories.
+- Set custom consents 1/ 2 tests setting custom values in bulk for the consent categories. The button trigger and tests the `setConsents(consents)` function.
 
-  - For custom consents 1 the consents are: essential: false, analytics: true, marketing: true. Those should be stored in localstorage alongside a `Date object` containing the timestamp of the consent.
-  - For custom consents 2 the consents are: essential: true, analytics: true, marketing: false. Those should be stored in localstorage alongside a `Date object` containing the timestamp of the consent.
+  - For custom consents 1 the consents are set to: essential: false, analytics: true, marketing: true. Those should be stored in localstorage alongside a `Date object` containing the timestamp of the consent.
+  - For custom consents 2 the consents are set to: essential: true, analytics: true, marketing: false. Those should be stored in localstorage alongside a `Date object` containing the timestamp of the consent.
     > Test passed ✅ at v. 1.0.1
 
-- The callback function is tested by updating the text content of the `<pre>` element at each change of the consents.
+- The `onConsentChange(callbackFunction)` is tested by updating the text content of the `<pre>` element at each change of the consents.
 
   > Test passed ✅ at v. 1.0.1
 

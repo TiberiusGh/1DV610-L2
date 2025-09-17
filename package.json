@@ -18,7 +18,7 @@
     "url": "https://github.com/TiberiusGh/1DV610-L2/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest --environment=jsdom",
     "dev": "tsc --watch",
     "build": "tsc"
   },
@@ -26,6 +26,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^24.3.1",
-    "typescript": "^5.9.2"
+    "jsdom": "^27.0.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }

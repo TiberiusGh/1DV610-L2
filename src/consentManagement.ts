@@ -1,10 +1,13 @@
-import type { ConsentCategories } from './types.ts'
+import type { ConsentCategories, ConsentInput } from './types.ts'
 import { runCallback } from './callback.js'
 import { saveConsent, clearConsent } from './storageManagement.js'
 import { validateFalseContents } from './validation.js'
 
-export function setConsents(consents: ConsentCategories): void {
-  const currentConsents = consents
+export function setConsents(consents: ConsentInput): void {
+  const currentConsents: ConsentCategories = {
+    ...consents,
+    uppdateTime: new Date()
+  }
 
   currentConsents.uppdateTime = new Date()
 

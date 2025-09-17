@@ -19,22 +19,27 @@ The specific test cases are:
     > Obs. if there are no other category set to true, the data would be removed from localstorage and the function would return `null`.
   - The Date `object` is uppdated containing the Date with timestamp of when the user updated consents latest.
     > Test passed ✅ at v. 1.0.1
+    > Test passed ✅ at v. 2.0.1
 
 - Accept/ Reject All triggers and tests the `acceptAll()` and `declineAll()` functions.
 
   - Accept all would set the consents for essentials, marketing, analytics to `true`
   - Reject all would delete the consents stored in localstorage
     > Test passed ✅ at v. 1.0.1
+    > Test passed ✅ at v. 2.0.1
 
 - Set custom consents 1/ 2 tests setting custom values in bulk for the consent categories. The button trigger and tests the `setConsents(consents)` function.
 
   - For custom consents 1 the consents are set to: essential: false, analytics: true, marketing: true. Those should be stored in localstorage alongside a `Date object` containing the timestamp of the consent.
   - For custom consents 2 the consents are set to: essential: true, analytics: true, marketing: false. Those should be stored in localstorage alongside a `Date object` containing the timestamp of the consent.
     > Test passed ✅ at v. 1.0.1
+    > Test passed ✅ at v. 2.0.1
 
 - The `onConsentChange(callbackFunction)` is tested by updating the text content of the `<pre>` element at each change of the consents.
 
   > Test passed ✅ at v. 1.0.1
+  > Test passed ✅ at v. 2.0.1
 
 - The removal of consents from localStorage after 12 months was tested by reducing the time to one minute in the development environment
   > Test passed ✅ at v. 1.0.1
+  > Test passed ✅ at v. 2.0.1

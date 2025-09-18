@@ -73,11 +73,15 @@ import {
 } from 'consent-tracker'
 ```
 
+### Reflections
+
+Reflections are provided in [reflections.md](docs/reflections.md)
+
 ### Testing
 
-Test report is provided in [testReport.md](testReport.md)
+Test report is provided in [testReport.md](docs/testReport.md)
 
-Manual tests are provided in [testingGuide.md](testingGuide.md)
+Manual tests are provided in [testingGuide.md](docs/testingGuide.md)
 
 ### Future development
 

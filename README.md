@@ -73,7 +73,11 @@ import {
 } from 'consent-tracker'
 ```
 
-### Testing report is provided in [testReport.md](testReport.md)
+### Testing
+
+Test report is provided in [testReport.md](testReport.md)
+
+Manual tests are provided in [testingGuide.md](testingGuide.md)
 
 ### Future development
 

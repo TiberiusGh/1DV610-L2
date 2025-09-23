@@ -1,19 +1,3 @@
-import { onConsentChange } from './callback.js'
-import { getConsents } from './storageManagement.js'
-import {
-  setConsents,
-  uppdateConsent,
-  acceptAll,
-  declineAll
-} from './consentManagement.js'
+import { ConsentTracker } from './ConsentTracker'
 
-const consentTracker = {
-  getConsents,
-  setConsents,
-  uppdateConsent,
-  acceptAll,
-  declineAll,
-  onConsentChange
-}
-
-export default consentTracker
+export default ConsentTracker

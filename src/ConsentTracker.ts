@@ -8,12 +8,6 @@ export class ConsentTracker {
   #callbackManager = new CallbackManager()
   #validateConsents = new ValidateConsents()
 
-  constructor() {
-    this.#localStorage = new LocalStorage()
-    this.#callbackManager = new CallbackManager()
-    this.#validateConsents = new ValidateConsents()
-  }
-
   onConsentChange(callback: Function): ConsentTracker {
     this.#callbackManager.onConsentChange(callback)
     return this

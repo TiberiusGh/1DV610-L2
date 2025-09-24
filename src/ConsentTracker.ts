@@ -34,7 +34,13 @@ export class ConsentTracker {
   }
 
   uppdateConsent(category: string, value: boolean): void {
-    let storedConsent = this.#localStorage.getConsents()
+    let storedConsent: ConsentCategories | null
+
+    try {
+      storedConsent = this.#localStorage.getConsents()
+    } catch (error) {
+      storedConsent = null
+    }
 
     if (!storedConsent) {
       storedConsent = {

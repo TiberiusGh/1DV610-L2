@@ -1,46 +1,48 @@
 import type { ConsentCategories } from './types'
+import { ValidateConsents } from './ValidateConsents'
 
 export class LocalStorage {
+  #validateConsents: ValidateConsents
   #localStorageName = 'consent-tracker'
-  getConsents(): ConsentCategories | null {
+
+  constructor() {
+    this.#validateConsents = new ValidateConsents()
+  }
+
+  getConsents(): ConsentCategories {
+    const storedConsents = this.#getStoredConsents()
+    const parsedConsents = this.#parseConsents(storedConsents)
+    this.#validateConsents.validateExpiredConsents(parsedConsents)
+
+    return parsedConsents
+  }
+
+  #getStoredConsents(): string {
     const storedConsents = localStorage.getItem(this.#localStorageName)
 
-    if (!storedConsents) {
-      return null
-    }
-    try {
-      const parsedConsents = JSON.parse(storedConsents)
-      parsedConsents.uppdateTime = new Date(parsedConsents.uppdateTime)
-
-      const isExpired = this.#validateDate(parsedConsents.uppdateTime)
-
-      if (!isExpired) {
-        return parsedConsents
-      } else {
-        this.clearConsent()
-        return null
-      }
-    } catch (error) {
-      return null
+    if (storedConsents) {
+      return storedConsents
+    } else {
+      throw new Error('No stored consents')
     }
   }
+
+  #parseConsents(storedConsents: string): ConsentCategories {
+    try {
+      const parsedConsents = JSON.parse(storedConsents)
+      return parsedConsents
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error)
+      throw new Error(errorMessage)
+    }
+  }
+
   saveConsent(consent: ConsentCategories): void {
     localStorage.setItem(this.#localStorageName, JSON.stringify(consent))
   }
 
   clearConsent(): void {
     localStorage.removeItem(this.#localStorageName)
-  }
-
-  validateFalseContents(consents: ConsentCategories): boolean {
-    return !(consents.analytics || consents.essential || consents.marketing)
-  }
-
-  #validateDate(storedDate: Date): boolean {
-    const currentDate = new Date()
-    const expirationDate = new Date(storedDate)
-    expirationDate.setMonth(storedDate.getMonth() + 12)
-
-    return currentDate > expirationDate
   }
 }

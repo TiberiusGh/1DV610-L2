@@ -2,8 +2,6 @@ import { LocalStorage } from './LocalStorage'
 import type { ConsentCategories } from './types'
 
 export class ConsentsValidator {
-  #localStorage = new LocalStorage()
-
   validateFalseContents(consents: ConsentCategories): boolean {
     return !(consents.analytics || consents.essential || consents.marketing)
   }
@@ -16,16 +14,9 @@ export class ConsentsValidator {
     return currentDate > expirationDate // Returns true if expired
   }
 
-  #clearExpiredConsents() {
-    this.#localStorage.clearConsent()
-    throw new Error('The consents are expired')
-  }
-
-  validateExpiredConsents(consents: ConsentCategories) {
+  validateExpiredConsents(consents: ConsentCategories): boolean {
     const expiredConsents = this.#hasExpiredConsents(consents.uppdateTime)
 
-    if (expiredConsents) {
-      this.#clearExpiredConsents()
-    }
+    return expiredConsents
   }
 }

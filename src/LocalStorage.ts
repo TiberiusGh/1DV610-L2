@@ -8,7 +8,13 @@ export class LocalStorage {
   getConsents(): ConsentCategories {
     const storedConsents = this.#getStoredConsents()
     const parsedConsents = this.#parseConsents(storedConsents)
-    this.#consentsValidator.validateExpiredConsents(parsedConsents)
+    const expiredConsents =
+      this.#consentsValidator.validateExpiredConsents(parsedConsents)
+
+    if (expiredConsents) {
+      this.clearConsent()
+      throw new Error('The consents are expired')
+    }
 
     return parsedConsents
   }

@@ -1,6 +1,6 @@
 {
   "name": "consent-tracker",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "The consent management library that doesn't fight your design system",
   "type": "module",
   "main": "./dist/index.js",

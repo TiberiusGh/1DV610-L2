@@ -1,14 +1,14 @@
 import type { ConsentCategories } from './types'
-import { ValidateConsents } from './ValidateConsents'
+import { ConsentsValidator } from './ConsentsValidator'
 
 export class LocalStorage {
-  #validateConsents = new ValidateConsents()
+  #consentsValidator = new ConsentsValidator()
   #localStorageName = 'consent-tracker'
 
   getConsents(): ConsentCategories {
     const storedConsents = this.#getStoredConsents()
     const parsedConsents = this.#parseConsents(storedConsents)
-    this.#validateConsents.validateExpiredConsents(parsedConsents)
+    this.#consentsValidator.validateExpiredConsents(parsedConsents)
 
     return parsedConsents
   }

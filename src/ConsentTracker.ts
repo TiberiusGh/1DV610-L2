@@ -1,12 +1,12 @@
 import type { ConsentCategories } from './types'
 import { LocalStorage } from './LocalStorage'
 import { CallbackManager } from './CallbackManager'
-import { ValidateConsents } from './ValidateConsents'
+import { ConsentsValidator } from './ConsentsValidator'
 
 export class ConsentTracker {
   #localStorage = new LocalStorage()
   #callbackManager = new CallbackManager()
-  #validateConsents = new ValidateConsents()
+  #consentsValidator = new ConsentsValidator()
 
   onConsentChange(callback: Function): ConsentTracker {
     this.#callbackManager.onConsentChange(callback)
@@ -22,7 +22,7 @@ export class ConsentTracker {
     currentConsents.uppdateTime = new Date()
 
     const falseConsents =
-      this.#validateConsents.validateFalseContents(currentConsents)
+      this.#consentsValidator.validateFalseContents(currentConsents)
 
     if (falseConsents) {
       this.#localStorage.clearConsent()
@@ -60,7 +60,7 @@ export class ConsentTracker {
     storedConsent.uppdateTime = new Date()
 
     const falseConsents =
-      this.#validateConsents.validateFalseContents(storedConsent)
+      this.#consentsValidator.validateFalseContents(storedConsent)
 
     if (falseConsents) {
       this.#localStorage.clearConsent()

@@ -4,9 +4,9 @@ import { CallbackManager } from './CallbackManager'
 import { ValidateConsents } from './ValidateConsents'
 
 export class ConsentTracker {
-  #localStorage: LocalStorage
-  #callbackManager: CallbackManager
-  #validateConsents: ValidateConsents
+  #localStorage = new LocalStorage()
+  #callbackManager = new CallbackManager()
+  #validateConsents = new ValidateConsents()
 
   constructor() {
     this.#localStorage = new LocalStorage()

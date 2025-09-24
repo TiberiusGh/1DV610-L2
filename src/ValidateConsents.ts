@@ -2,11 +2,7 @@ import { LocalStorage } from './LocalStorage'
 import type { ConsentCategories } from './types'
 
 export class ValidateConsents {
-  #localStorage: LocalStorage
-
-  constructor() {
-    this.#localStorage = new LocalStorage()
-  }
+  #localStorage = new LocalStorage()
 
   validateFalseContents(consents: ConsentCategories): boolean {
     return !(consents.analytics || consents.essential || consents.marketing)

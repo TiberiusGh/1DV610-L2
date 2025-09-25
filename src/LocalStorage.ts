@@ -1,15 +1,14 @@
-import type { ConsentCategories } from './types'
-import { ConsentsValidator } from './ConsentsValidator'
+import type { ConsentCategories, ConsentsWithTimeStamp } from './types'
+import { Validator } from './Validator'
 
 export class LocalStorage {
-  #consentsValidator = new ConsentsValidator()
+  #validator = new Validator()
   #localStorageName = 'consent-tracker'
 
-  getConsents(): ConsentCategories {
+  getConsents(): ConsentsWithTimeStamp {
     const storedConsents = this.#getStoredConsents()
     const parsedConsents = this.#parseConsents(storedConsents)
-    const expiredConsents =
-      this.#consentsValidator.validateExpiredConsents(parsedConsents)
+    const expiredConsents = this.#validator.hasExpiredConsents(parsedConsents)
 
     if (expiredConsents) {
       this.clearConsent()
@@ -29,7 +28,7 @@ export class LocalStorage {
     }
   }
 
-  #parseConsents(storedConsents: string): ConsentCategories {
+  #parseConsents(storedConsents: string): ConsentsWithTimeStamp {
     try {
       const parsedConsents = JSON.parse(storedConsents)
       return parsedConsents
@@ -41,7 +40,21 @@ export class LocalStorage {
   }
 
   saveConsent(consent: ConsentCategories): void {
-    localStorage.setItem(this.#localStorageName, JSON.stringify(consent))
+    const ConsentsWithTimeStamp = this.#addCurrentTime(consent)
+
+    localStorage.setItem(
+      this.#localStorageName,
+      JSON.stringify(ConsentsWithTimeStamp)
+    )
+  }
+
+  #addCurrentTime(consents: ConsentCategories): ConsentsWithTimeStamp {
+    const consentsWithTimeStamp: ConsentsWithTimeStamp = {
+      ...consents,
+      consentDate: new Date()
+    }
+
+    return consentsWithTimeStamp
   }
 
   clearConsent(): void {

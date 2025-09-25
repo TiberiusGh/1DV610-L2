@@ -1,22 +1,16 @@
 import { LocalStorage } from './LocalStorage'
-import type { ConsentCategories } from './types'
+import type { ConsentCategories, ConsentsWithTimeStamp } from './types'
 
-export class ConsentsValidator {
+export class Validator {
   validateFalseContents(consents: ConsentCategories): boolean {
     return !(consents.analytics || consents.essential || consents.marketing)
   }
 
-  #hasExpiredConsents(storedDate: Date): boolean {
+  hasExpiredConsents(consents: ConsentsWithTimeStamp): boolean {
     const currentDate = new Date()
-    const expirationDate = new Date(storedDate)
+    const expirationDate = new Date(consents.consentDate)
     expirationDate.setMonth(expirationDate.getMonth() + 12)
 
     return currentDate > expirationDate // Returns true if expired
-  }
-
-  validateExpiredConsents(consents: ConsentCategories): boolean {
-    const expiredConsents = this.#hasExpiredConsents(consents.uppdateTime)
-
-    return expiredConsents
   }
 }

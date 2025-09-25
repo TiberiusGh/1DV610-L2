@@ -1,6 +1,6 @@
 import type { ConsentCategories } from './types'
 
-export class CallbackManager {
+export class Callback {
   #callbackFunction: Function | null = null
 
   onConsentChange(callback: Function): void {

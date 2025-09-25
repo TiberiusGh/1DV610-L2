@@ -7,3 +7,7 @@ export type ConsentCategories = {
 export type ConsentsWithTimeStamp = ConsentCategories & {
   consentDate: Date
 }
+
+export type ConsentsWithDateAndIP = ConsentsWithTimeStamp & {
+  userIP: string
+}

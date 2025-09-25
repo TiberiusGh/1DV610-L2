@@ -2,11 +2,13 @@ import type { ConsentCategories, ConsentsWithTimeStamp } from './types'
 import { LocalStorage } from './LocalStorage'
 import { Callback } from './Callback'
 import { Validator } from './Validator'
+import { Webhook } from './Webhook'
 
 export class ConsentTracker {
   #localStorage = new LocalStorage()
   #callback = new Callback()
   #validator = new Validator()
+  #webhook: Webhook | null = null
 
   // Wrapper function
   onConsentChange(callback: Function): ConsentTracker {
@@ -17,6 +19,14 @@ export class ConsentTracker {
   // Wrapper function
   getConsents(): ConsentsWithTimeStamp {
     return this.#localStorage.getConsents()
+  }
+
+  setWebhook(endpoint: string): void {
+    this.#webhook = new Webhook(endpoint)
+  }
+
+  setDeveloperMode() {
+    this.#webhook?.setDevelopmentMode()
   }
 
   setConsents(consents: ConsentCategories): void {
@@ -74,9 +84,21 @@ export class ConsentTracker {
     this.#handleInvalidConsents()
   }
 
+  #addCurrentTime(consents: ConsentCategories): ConsentsWithTimeStamp {
+    const consentsWithTimeStamp: ConsentsWithTimeStamp = {
+      ...consents,
+      consentDate: new Date()
+    }
+
+    return consentsWithTimeStamp
+  }
+
   #handleValidConsents(consents: ConsentCategories) {
-    this.#localStorage.saveConsent(consents)
-    this.#callback.runCallback(consents)
+    const consentsWithTimeStamp = this.#addCurrentTime(consents)
+
+    this.#localStorage.saveConsent(consentsWithTimeStamp)
+    this.#callback.runCallback(consentsWithTimeStamp)
+    this.#webhook?.sendData(consentsWithTimeStamp)
   }
 
   #handleInvalidConsents() {

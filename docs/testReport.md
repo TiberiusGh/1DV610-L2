@@ -16,6 +16,7 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.1
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
 
 #### 1b. - Empty State Test
 
@@ -25,6 +26,7 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.1
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
 
 ### 2. Individual Consent Updates Test
 
@@ -34,6 +36,7 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.1
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
 
 ### 3. Accept/Reject All Test
 
@@ -43,6 +46,7 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.1
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
 
 ### 4. Set Custom Consents Test
 
@@ -52,6 +56,7 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.1
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
 
 ### 5. Consent Change Callback Test
 
@@ -61,3 +66,4 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.1
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4

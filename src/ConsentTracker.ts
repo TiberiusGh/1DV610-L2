@@ -26,7 +26,11 @@ export class ConsentTracker {
   }
 
   setDeveloperMode() {
-    this.#webhook?.setDevelopmentMode()
+    if (this.#webhook) {
+      this.#webhook.setDevelopmentMode()
+    } else {
+      throw new Error('The webhook endpoin needs to be set first')
+    }
   }
 
   setConsents(consents: ConsentCategories): void {
@@ -51,7 +55,11 @@ export class ConsentTracker {
   }
 
   #createConsentObject(category: string, value: boolean): ConsentCategories {
-    const existingConsents = this.#localStorage.getConsents()
+    let existingConsents: ConsentCategories | null = null
+
+    try {
+      existingConsents = this.#localStorage.getConsents()
+    } catch (error) {}
 
     const consents: ConsentCategories = {
       essential: existingConsents?.essential ?? false,

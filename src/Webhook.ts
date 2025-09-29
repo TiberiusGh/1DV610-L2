@@ -3,7 +3,7 @@ import type { ConsentsWithTimeStamp, ConsentsWithDateAndIP } from './types'
 export class Webhook {
   #endpoint: string
   #publicAPIReturningIP = 'https://api.ipify.org?format=json'
-  #devloperMode: boolean | null = null
+  #devloperMode: boolean | false = false
 
   constructor(endpoint: string) {
     this.#endpoint = endpoint
@@ -21,18 +21,14 @@ export class Webhook {
         body: JSON.stringify(dataWithIP)
       })
 
-      if (!response.ok && this.#devloperMode) {
-        throw new Error(`HTTP POST error. Status: ${response.status}`)
+      if (!response.ok) {
+        this.#throwError(response)
       }
 
       const result = await response.json()
       return result
     } catch (error) {
-      if (this.#devloperMode) {
-        throw new Error(
-          'POST error' + 'Error message: ' + (error as Error).message
-        )
-      }
+      this.#throwError(error)
     }
   }
 
@@ -50,14 +46,39 @@ export class Webhook {
     try {
       const response = await fetch(this.#publicAPIReturningIP)
 
-      if (!response.ok && this.#devloperMode) {
-        throw new Error(`Fetching IP failed. Status: ${response.status}`)
+      if (!response.ok) {
+        this.#throwError(response)
       }
 
       const data = await response.json()
       return data.ip
     } catch (error) {
-      throw new Error('Error in fetchin IP: ' + error)
+      this.#throwError(error)
     }
+  }
+
+  #throwError(error: unknown): never {
+    const errorMessage = this.#createErrorMessage(error)
+    if (this.#devloperMode) {
+      throw new Error(errorMessage)
+    } else {
+      throw new Error('Something went wrong')
+    }
+  }
+
+  #createErrorMessage(error: unknown): string {
+    let message: string
+
+    if (error instanceof Error) {
+      message = error.message
+    } else if (error instanceof Response) {
+      message = `HTTP Error: ${error.status} ${error.statusText}`
+    } else if (typeof error === 'string') {
+      message = error
+    } else {
+      message = 'Unknown error occurred'
+    }
+
+    return message
   }
 }

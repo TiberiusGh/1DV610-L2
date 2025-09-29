@@ -19,20 +19,19 @@ Function Under Test: getConsents()
 Steps:
 
 1. Start with a clean browser session (clear localStorage if needed)
-2. Click the "Get consents" button
-3. Observe the result in the `<pre>` element
+2. Click the "Get consents in console" button
+3. Observe the result in the console
 
 Expected Results:
 
-The `pre` element should display `null` (no consents stored)
+The console should throw error saying that there are no stored consents
 
 ### 1b. Get Current Consents - With Stored Consents Test
 
 Steps:
 
 1. Set some consents (e.g., click "Essentials ON" and "Marketing ON")
-2. Click the "Get consents" button
-3. Observe the result in localstorage or in the `<pre>` element
+2. Observe the result in localstorage or in the `<pre>` element
 
 Expected Results:
 
@@ -125,7 +124,7 @@ Function Under Test: Webhook.sendData()
 Steps:
 
 1. Open browser developer tools and go to Network tab
-2. Set up a webhook callback in the test interface
+2. Set up a webhook url in the `<input>` (recommend using webhook.site but remember to enable CORS in the config on webhook.com)
 3. Click "Accept All" button
 4. Check the Network tab for a POST request to the webhook endpoint
 5. Click "Essentials OFF" button

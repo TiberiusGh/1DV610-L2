@@ -1,4 +1,3 @@
-import { LocalStorage } from './LocalStorage'
 import type { ConsentCategories, ConsentsWithTimeStamp } from './types'
 
 export class Validator {

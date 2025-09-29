@@ -73,6 +73,10 @@ import {
 } from 'consent-tracker'
 ```
 
+### Dependency
+
+The module is using `ipify` to fetch the IP of the user leaving consents (if you are implementing webhook)
+
 ### Reflections
 
 Reflections are provided in [reflections.md](docs/reflections.md)

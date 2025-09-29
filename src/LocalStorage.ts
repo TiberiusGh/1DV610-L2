@@ -39,22 +39,8 @@ export class LocalStorage {
     }
   }
 
-  saveConsent(consent: ConsentCategories): void {
-    const ConsentsWithTimeStamp = this.#addCurrentTime(consent)
-
-    localStorage.setItem(
-      this.#localStorageName,
-      JSON.stringify(ConsentsWithTimeStamp)
-    )
-  }
-
-  #addCurrentTime(consents: ConsentCategories): ConsentsWithTimeStamp {
-    const consentsWithTimeStamp: ConsentsWithTimeStamp = {
-      ...consents,
-      consentDate: new Date()
-    }
-
-    return consentsWithTimeStamp
+  saveConsent(consent: ConsentsWithTimeStamp): void {
+    localStorage.setItem(this.#localStorageName, JSON.stringify(consent))
   }
 
   clearConsent(): void {

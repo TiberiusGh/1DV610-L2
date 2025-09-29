@@ -51,10 +51,12 @@ export class ConsentTracker {
   }
 
   #createConsentObject(category: string, value: boolean): ConsentCategories {
-    const consents = {
-      essential: false,
-      analytics: false,
-      marketing: false
+    const existingConsents = this.#localStorage.getConsents()
+
+    const consents: ConsentCategories = {
+      essential: existingConsents?.essential ?? false,
+      analytics: existingConsents?.analytics ?? false,
+      marketing: existingConsents?.marketing ?? false
     }
 
     switch (category) {

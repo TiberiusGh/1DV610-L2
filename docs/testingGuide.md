@@ -117,3 +117,21 @@ Expected Results:
 - The `<pre>` element should automatically update after every consent change
 - The displayed content should always match the current consent state
 - No manual refresh or additional button clicks should be needed
+
+### 6. Webhook Test
+
+Function Under Test: Webhook.sendData()
+
+Steps:
+
+1. Open browser developer tools and go to Network tab
+2. Set up a webhook callback in the test interface
+3. Click "Accept All" button
+4. Check the Network tab for a POST request to the webhook endpoint
+5. Click "Essentials OFF" button
+6. Check the Network tab for another POST request
+
+Expected Results:
+
+- Each consent change should trigger a POST request in the Network tab
+- The request should contain consent data with IP address

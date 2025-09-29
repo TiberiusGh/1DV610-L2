@@ -67,3 +67,7 @@ All manual test cases have been executed and validated against the consent-track
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.2
 **Status**: ✅ **PASSED** **Version Tested**: v3.0.3
 **Status**: ❌ **FAILED** **Version Tested**: v3.0.4
+
+### 6. Webhook Test
+
+**Status**: ❌ **FAILED** **Version Tested**: v3.0.4

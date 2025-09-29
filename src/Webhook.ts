@@ -24,9 +24,6 @@ export class Webhook {
       if (!response.ok) {
         this.#throwError(response)
       }
-
-      const result = await response.json()
-      return result
     } catch (error) {
       this.#throwError(error)
     }

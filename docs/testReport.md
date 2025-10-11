@@ -10,71 +10,130 @@ All manual test cases have been executed and validated against the consent-track
 
 #### 1a. - Empty State Test
 
-**Status**: ✅ **PASSED** **Version Tested**: v1.0.1
-**Status**: ✅ **PASSED** **Version Tested**: v2.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.0
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.2
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.3
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ ✅ **PASSED** **Version Tested**: v1.0.1
+
+ ✅ **PASSED** **Version Tested**: v2.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.0
+
+ ❌ **FAILED** **Version Tested**: v3.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.2
+
+ ✅ **PASSED** **Version Tested**: v3.0.3
+
+ ❌ **FAILED** **Version Tested**: v3.0.4
+
+ ✅ **PASSED** **Version Tested**: v3.0.5
+
+ <br>
+
 
 #### 1b. - Empty State Test
 
-**Status**: ✅ **PASSED** **Version Tested**: v1.0.1
-**Status**: ✅ **PASSED** **Version Tested**: v2.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.0
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.2
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.3
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ ✅ **PASSED** **Version Tested**: v1.0.1
 
-### 2. Individual Consent Updates Test
+ ✅ **PASSED** **Version Tested**: v2.0.1
 
-**Status**: ✅ **PASSED** **Version Tested**: v1.0.1  
-**Status**: ✅ **PASSED** **Version Tested**: v2.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.0
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.2
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.3
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ ❌ **FAILED** **Version Tested**: v3.0.0
 
-### 3. Accept/Reject All Test
+ ❌ **FAILED** **Version Tested**: v3.0.1
 
-**Status**: ✅ **PASSED** **Version Tested**: v1.0.1  
-**Status**: ✅ **PASSED** **Version Tested**: v2.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.0
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.2
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.3
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ ❌ **FAILED** **Version Tested**: v3.0.2
 
-### 4. Set Custom Consents Test
+ ✅ **PASSED** **Version Tested**: v3.0.3
 
-**Status**: ✅ **PASSED** **Version Tested**: v1.0.1  
-**Status**: ✅ **PASSED** **Version Tested**: v2.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.0
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.2
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.3
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ ❌ **FAILED** **Version Tested**: v3.0.4
 
-### 5. Consent Change Callback Test
+ ✅ **PASSED** **Version Tested**: v3.0.5
 
-**Status**: ✅ **PASSED** **Version Tested**: v1.0.1  
-**Status**: ✅ **PASSED** **Version Tested**: v2.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.0
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.1
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.2
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.3
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ <br>
 
-### 6. Webhook Test
+## 2. Individual Consent Updates Test
 
-**Status**: ❌ **FAILED** **Version Tested**: v3.0.4
-**Status**: ✅ **PASSED** **Version Tested**: v3.0.5
+ ✅ **PASSED** **Version Tested**: v1.0.1  
+
+ ✅ **PASSED** **Version Tested**: v2.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.0
+
+ ❌ **FAILED** **Version Tested**: v3.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.2
+
+ ✅ **PASSED** **Version Tested**: v3.0.3
+
+ ❌ **FAILED** **Version Tested**: v3.0.4
+
+ ✅ **PASSED** **Version Tested**: v3.0.5
+
+ <br>
+
+## 3. Accept/Reject All Test
+
+ ✅ **PASSED** **Version Tested**: v1.0.1  
+
+ ✅ **PASSED** **Version Tested**: v2.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.0
+
+ ❌ **FAILED** **Version Tested**: v3.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.2
+
+ ✅ **PASSED** **Version Tested**: v3.0.3
+
+ ❌ **FAILED** **Version Tested**: v3.0.4
+
+ ✅ **PASSED** **Version Tested**: v3.0.5
+
+ <br>
+
+
+## 4. Set Custom Consents Test
+
+ ✅ **PASSED** **Version Tested**: v1.0.1  
+
+ ✅ **PASSED** **Version Tested**: v2.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.0
+
+ ❌ **FAILED** **Version Tested**: v3.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.2
+
+ ✅ **PASSED** **Version Tested**: v3.0.3
+
+ ❌ **FAILED** **Version Tested**: v3.0.4
+
+ ✅ **PASSED** **Version Tested**: v3.0.5
+
+ <br>
+
+
+## 5. Consent Change Callback Test
+
+ ✅ **PASSED** **Version Tested**: v1.0.1  
+
+ ✅ **PASSED** **Version Tested**: v2.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.0
+
+ ❌ **FAILED** **Version Tested**: v3.0.1
+
+ ❌ **FAILED** **Version Tested**: v3.0.2
+
+ ✅ **PASSED** **Version Tested**: v3.0.3
+
+ ❌ **FAILED** **Version Tested**: v3.0.4
+
+ ✅ **PASSED** **Version Tested**: v3.0.5
+
+ <br>
+
+
+## 6. Webhook Test
+
+ ❌ **FAILED** **Version Tested**: v3.0.4
+
+ ✅ **PASSED** **Version Tested**: v3.0.5

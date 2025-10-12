@@ -2,11 +2,7 @@
 
 ## Law requirements
 
-According to Swedish law (lagen om elektronisk kommunikation) when a webbsite wants to store non-essential information (not strictly necessary for the website's basic functionality) on that person's browser, the person must give consent before such data is stored.
-
-The European law (GDPR) regulates how personal information must be handled, stored, processed and protected if the webbsite chooses to store personal information about the website visitor. 
-
-Furthermore, to maintain GDPR compoiance, a website owner must also provide proof of what consents each visitor has given.
+According to Swedish law (lagen om elektronisk kommunikation) when a webbsite wants to store non-essential information (not strictly necessary for the website's basic functionality) on that user's browser, the user must give consent before such data is stored. GDPR further regulates how personal information must be handled and protected and require wwebsite owners to provide prof of specific user's consents. 
 
 <br>
 
@@ -19,21 +15,17 @@ The aim of the module is to provide a simple interface for managing user's conse
 
 ## Functionality and limitations
 
-This module does only provide the underlying logic needed for storing, retrieving and updating the consents trough easy to use function calls.
+This module does only provide the underlying logic for storing, retrieving and updating the consents trough simple function calls.
 
-Providing proof of users consents is made possible trough a webhook implementation where on each consent change, it sends a POST request containg the user's consents and their IP at the provided webhook URL.
-
-> [!WARNING]
-> I understand that creating such a package is much more complex than the implementation provided here. Further improvements are registered under issues.
-
+Providing proof of users consents is made possible trough a webhook that sends a POST request containg the user's consents and their IP at the provided webhook URL.
 
 This module does **not** provide the visual banner that would get rendered in the viewport.
 
-The module is using local storage to store the users consents and has no implementation of using cookies in it's current form.
+The module is using local storage to store the users consents.
 
 If consents are set to `false`, the value won't be stored on user's machine since the user didn't consent to that.
 
-The user's consents are valid for 12 months and get removed after that.
+The user's consents are valid for 12 months and automatically removed after that.
 
 
 <br>
@@ -52,7 +44,7 @@ import ConsentTracker from 'consent-tracker'
 
 ## Public API's
 
-- onConsentChange(callbackFunction) - Registers a callback that runs when the consent state changes. The callback receives the current consents as an object:
+All methods that return or send consent data use the following structure:
 
 ```js
 {
@@ -62,21 +54,14 @@ import ConsentTracker from 'consent-tracker'
   consentDate: Date
 }
 ```
+
+- onConsentChange(callbackFunction) - Registers a callback that runs when the consent state changes. The callback receives the current consents as an object:
+
 
 - getConsents() - Returns the consents in object format or throws an error if no consent is found
 
-```js
-{
-  essential: boolean
-  analytics: boolean
-  marketing: boolean
-  consentDate: Date
-}
-```
 
 - setWebhook(endpoint) - Registers API endpoint for the webhook and sends the current consents each time they update. The sent data is POST:en as:
-> [!NOTE]
-  > The user's ip is discovered trough the dependency `ipify`
 
 ```js
 essential: boolean
@@ -85,6 +70,9 @@ marketing: boolean
 consentDate: Date
 userIP: string
 ```
+> [!NOTE]
+> The user's ip is discovered trough the dependency `ipify`
+
 
 - setDeveloperMode() - Allows more permissive logs when seting up the webhooks. Helpful in debugging.
 

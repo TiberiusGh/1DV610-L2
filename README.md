@@ -1,20 +1,56 @@
 # consent-tracker
 
-In this repository i am creating a module for managing consents from users regarding storing data on the user's "terminal". The target of this module is developers that want full design customization posibility for their cookie consent banner. This module does only provide the underlying logic needed for storing, retrieving and updating the consents trough trough easy to use function calls. The current available packages on NPM are either inferring their design choices on the banner. Simply put, a consent manager that doesn't fight design choices.
+## Law requirements
 
-I understand that creating such a package is much more complex than the implementation provided here. Further improvements are registered under issues. Working with this package has given me knowledge about the current governing laws about "cookie" consent.
+According to Swedish law (lagen om elektronisk kommunikation) when a webbsite wants to store non-essential information (not strictly necessary for the website's basic functionality) on that person's browser, the person must give consent before such data is stored.
 
-To maintain legal compliance, one must provide proof of users consents. This is by praxis done by creating and keeping logs of the user's consents. For the consents to be mapped to the right person, personal data in form of IP addresses needs to be provided in the logs. This feature has beed implemented by alowing users to add a webhook URL where the package would send the consents together with the IP of the user.
+The European law (GDPR) regulates how personal information must be handled, stored, processed and protected if the webbsite chooses to store personal information about the website visitor. 
+
+Furthermore, to maintain GDPR compoiance, a website owner must also provide proof of what consents each visitor has given.
+
+<br>
+
+## Purpose of `consent-tracker`
+
+The aim of the module is to provide a simple interface for managing user's consents alowing developers full design customization posibility for their banner. Simply put, a consent manager that doesn't fight design choices.
+
+<br>
+
+
+## Functionality and limitations
+
+This module does only provide the underlying logic needed for storing, retrieving and updating the consents trough easy to use function calls.
+
+Providing proof of users consents is made possible trough a webhook implementation where on each consent change, it sends a POST request containg the user's consents and their IP at the provided webhook URL.
+
+> [!WARNING]
+> I understand that creating such a package is much more complex than the implementation provided here. Further improvements are registered under issues.
+
 
 This module does **not** provide the visual banner that would get rendered in the viewport.
 
-This module uses ES Modules and **not** CommonJS. Make sure you use `import` statements and not `reqire()`.
+The module is using local storage to store the users consents and has no implementation of using cookies in it's current form.
 
-The module is using local storage to store the users consents. If consents are set to `false`, the value won't be stored on user's machine since that defies the purpose/th user didn't consent to that.
+If consents are set to `false`, the value won't be stored on user's machine since the user didn't consent to that.
 
-The user's consents is valid for 12 months and removed after that.
+The user's consents are valid for 12 months and get removed after that.
 
-### Public API's
+
+<br>
+
+## Installation
+
+`npm i consent-tracker`
+
+Then import the module as:
+
+```js
+import ConsentTracker from 'consent-tracker'
+```
+
+<br>
+
+## Public API's
 
 - onConsentChange(callbackFunction) - Registers a callback that runs when the consent state changes. The callback receives the current consents as an object:
 
@@ -39,6 +75,7 @@ The user's consents is valid for 12 months and removed after that.
 ```
 
 - setWebhook(endpoint) - Registers API endpoint for the webhook and sends the current consents each time they update. The sent data is POST:en as:
+> [!NOTE]
   > The user's ip is discovered trough the dependency `ipify`
 
 ```js
@@ -71,29 +108,28 @@ uppdateConsent('analytics', boolean)
 
 - declineAll() - Removes/ deletes the consent object in storage
 
-### Installation
+<br>
 
-`npm i consent-tracker`
-
-#### Import the module as:
-
-```js
-import ConsentTracer from 'consent-tracker'
-```
 
 ### Dependencyes
 
 The module is using `ipify` to fetch the IP of the user leaving consents (if you are implementing webhook)
 
+<br>
+
 ### Reflections
 
 Reflections are provided in [reflections.md](docs/reflections.md)
+
+<br>
 
 ### Testing
 
 Manual tests are provided in [testingGuide.md](docs/testingGuide.md)
 
 Test report is provided in [testReport.md](docs/testReport.md)
+
+<br>
 
 ### Contributing
 

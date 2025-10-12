@@ -68,11 +68,13 @@ All methods that return or send consent data use the following structure:
 - setWebhook(endpoint) - Registers API endpoint for the webhook and sends the current consents each time they update. The sent data is POST:en as:
 
 ```js
+{
 essential: boolean
 analytics: boolean
 marketing: boolean
 consentDate: Date
 userIP: string
+}
 ```
 > [!NOTE]
 > The user's ip is discovered trough the dependency `ipify`

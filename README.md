@@ -34,10 +34,14 @@ The user's consents are valid for 12 months and automatically removed after that
 
 `npm i consent-tracker`
 
-Then import the module as:
+Then import and use the module as:
 
 ```js
 import ConsentTracker from 'consent-tracker'
+
+const consentTracker = new ConsentTracker()
+
+consentTracker.uppdateConsent('analytics', true)
 ```
 
 <br>

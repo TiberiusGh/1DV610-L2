@@ -1,6 +1,6 @@
 {
   "name": "consent-tracker",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "The consent management library that doesn't fight your design system",
   "keywords": [
     "consent",

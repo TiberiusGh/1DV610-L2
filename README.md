@@ -102,6 +102,7 @@ uppdateConsent('analytics', boolean)
 
 - declineAll() - Removes/ deletes the consent object in storage
 
+- hasConsents() - Returns true if there are valid consents stored otherwise returns false
 <br>
 
 

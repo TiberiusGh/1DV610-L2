@@ -46,4 +46,13 @@ export class LocalStorage {
   clearConsent(): void {
     localStorage.removeItem(this.#localStorageName)
   }
+
+  hasConsents(): boolean {
+    try {
+      this.getConsents()
+      return true
+    } catch (error) {
+      return false
+    }
+  }
 }

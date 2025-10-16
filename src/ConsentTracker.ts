@@ -30,6 +30,14 @@ export class ConsentTracker {
     return this.#localStorage.getConsents()
   }
 
+  // Wrapper function
+  /**
+   * Returns true if there are valid, stored consents otherwise returns false
+   */
+  hasConsents(): boolean {
+    return this.#localStorage.hasConsents()
+  }
+
   /**
    * Sets the webhook endpoint for consent notifications.
    * @param endpoint - URL where consent changes will be sent
